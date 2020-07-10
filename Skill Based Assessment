@@ -38,7 +38,7 @@ def USDtoEUR(usd):
   
   #function for currency changer, buy and sell with certain percentage up and down on buy on sell using class, 
   
-  class moneyc:
+ class moneyc:
     def __init__(self,dcurr,base='IDR',perc=2):
         self.dcurry = dcurrIDR
         self.base = (base)
