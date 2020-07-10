@@ -1,0 +1,63 @@
+#Printing stars based on user input with series of number separated by whitespace and sorted from small number.
+def functstars():
+  numbers = input("Add number smaller than 10 separate by whitespaces : ")
+  clear = numbers.replace(' ','')
+  lstnumber = sorted(list(clear))
+  lstnumbern = [int(i) for i in lstnumber]
+  for i in lstnumbern:
+    #return ('*'*i)
+    print ('*'*i)
+    
+functstars()
+
+
+#function to swipe case from upper to lowercase and vice versa and filter other character other than alphabet into one string
+def changeralpha(txt):
+  new = ''.join([i for i in txt if i.isalpha()])
+  for char in new:
+    return new.swapcase()
+    
+changeralpha('tH37skY iS ClEAr')
+
+
+#function for simple currency changer using data from a dictionary USD to EUR
+
+dcurrIDR = {'USD': 14425, 'EUR': 16225, 'AUD': 9925, 'CAD': 10500, 
+             'GBP': 17800, 'CHF': 15200, 'SGD': 10375, 'HKD': 1775, 
+             'JPY': 132500, 'MYR': 3250, 'SAR': 3500, 'WON': 10750, 
+             'IDR': 1}
+
+             
+def USDtoEUR(usd):
+  RP = usd * dcurrIDR.get('USD')
+  return RP/dcurrIDR.get('EUR') 
+  
+  print(USDtoEUR(100))
+  
+  
+  
+  #function for currency changer, buy and sell with certain percentage up and down on buy on sell using class, 
+  
+  class moneyc:
+    def __init__(self,dcurr,base='IDR',perc=2):
+        self.dcurry = dcurrIDR
+        self.base = (base)
+        self.perc = perc/100
+   
+   
+    def sell_price(self,amount,curr):
+      sell = dcurrIDR.get(curr)
+      totalSell = ((amount * sell) + (amount * sell* self.perc))/dcurrIDR.get(self.base)
+      return totalSell
+
+    def buy_price(self,amount,curr):
+      buy = dcurrIDR.get(curr)
+      totalBuy = ((amount * buy)-(amount * buy* self.perc))/dcurrIDR.get(self.base)
+      return totalBuy
+      
+      
+      
+mc = moneyc(dcurrIDR,base='EUR') # object mc with base EUR
+print('base', mc.base)
+print(mc.sell_price(100,'USD')) # selling price 100 USD to EUR (Base)
+print(mc.buy_price(100,'USD')) # buying price 100 USD to EUR (Base)      
